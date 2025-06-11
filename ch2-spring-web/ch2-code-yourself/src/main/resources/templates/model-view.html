@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1> 타임리프 예제</h1>
+    <div>
+        <!--th: 타임리프 문법이다라고 알려줌. msg가 있을 경우 메세지: 가 대체됨 -->
+        <h2 th:text = "${msg}">메세지: </h2>
+        <h2 th:text="${#temporals.format(currentTime,'yyyy-MM-dd')}">메세지 : </h2>
+    </div>
+</body>
+</html>
