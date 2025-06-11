@@ -14,5 +14,4 @@ public class MyFirstSpringbootAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MyFirstSpringbootAppApplication.class, args);
 	}
-
 }
