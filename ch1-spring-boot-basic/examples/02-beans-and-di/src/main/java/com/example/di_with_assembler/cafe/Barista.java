@@ -2,6 +2,7 @@ package com.example.di_with_assembler.cafe;
 
 
 public class Barista {
+    // CoffeeMachine은 인터페이스임
     private CoffeeMachine machine;
 
     public Barista() {

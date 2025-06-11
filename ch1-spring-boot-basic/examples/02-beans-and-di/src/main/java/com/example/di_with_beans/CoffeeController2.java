@@ -2,6 +2,7 @@ package com.example.di_with_beans;
 
 import com.example.di_with_beans.cafe.Barista;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CoffeeController2 {
 
 //    //    1. 필드 주입
-//    @Autowired
-//    Barista barista;
+    @Autowired
+    Barista barista;
 
     //    2. 생성자 주입
-    final Barista barista;
+//    final Barista barista;
 //    @Autowired
 //    public CoffeeController2(Barista barista) {
 //        this.barista = barista;
