@@ -83,4 +83,4 @@
 * Repository
 * Request DTO (`TodoRequest`)
 * Response DTO (`TodoResponse`)
-* Model Entity (`Todo`)
+* Model Entity (`Todo`) = 도메인

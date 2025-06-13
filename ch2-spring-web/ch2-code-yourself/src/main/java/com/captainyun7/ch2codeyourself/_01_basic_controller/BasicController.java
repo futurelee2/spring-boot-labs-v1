@@ -42,6 +42,10 @@ public class BasicController {
     }
 
     @ResponseBody
+
+
+
+
     @GetMapping("basic/filter")
     public String params(@RequestParam Map<String, String> params){
         return "전체파라미터" + params; ///basic/filter?type=new&mirae=new

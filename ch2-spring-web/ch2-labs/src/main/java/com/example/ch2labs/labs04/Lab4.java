@@ -29,7 +29,6 @@ public class Lab4 {
     private final String[] choices = {"rock", "paper", "scissor"};
     Random random = new Random();
 
-
     @GetMapping("/rps")
     public Map<String, String> game(@RequestParam String user) {
         int r = random.nextInt(3);
