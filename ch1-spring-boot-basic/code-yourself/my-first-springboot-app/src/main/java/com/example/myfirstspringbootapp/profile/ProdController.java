@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Profile("prod") // prod로 하면 조건부로 해서 생성이 안됨. 다른건 생성이 됨
 public class ProdController {
-    @GetMapping("/dev")
-    public String dev(){
-        return "개발환경";
+    @GetMapping("/prod")
+    public String prod(){
+        return "운영 환경";
     }
 }
