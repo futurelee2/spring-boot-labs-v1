@@ -20,9 +20,9 @@ public class PostExternalService {
     public boolean fetchAndStorePosts() {
         Post[] posts = webClient.get()
                 .uri("/posts")
-                .retrieve()
-                .bodyToMono(Post[].class)
-                .block();
+                .retrieve()// 응답 받아오기
+                .bodyToMono(Post[].class)// json 응답 배열로 변환
+                .block(); // webClient 는 동기로 응답 기다림
 
         if (posts != null) {
             for (Post post : posts) {

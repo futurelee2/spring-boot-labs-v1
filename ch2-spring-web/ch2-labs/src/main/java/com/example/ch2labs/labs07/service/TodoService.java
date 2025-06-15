@@ -3,6 +3,8 @@ package com.example.ch2labs.labs07.service;
 import com.example.ch2labs.labs07.domain.Todo;
 import com.example.ch2labs.labs07.dto.TodoCreateRequest;
 import com.example.ch2labs.labs07.dto.TodoResponse;
+import com.example.ch2labs.labs07.dto.TodoUpdateRequest;
+import com.example.ch2labs.labs07.exception.TodoNotFoundException;
 import com.example.ch2labs.labs07.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,7 @@ public class TodoService {
     private final TodoRepository repository;
 
     public TodoResponse getTodo(Long id) {
-        Todo todo = repository.findById(id).orElseThrow(()-> new RuntimeException("Todo not found"));
+        Todo todo = repository.findById(id).orElseThrow(()-> new TodoNotFoundException(id));
         return todoResponse(todo);
     }
 
@@ -29,5 +31,13 @@ public class TodoService {
 
     public void deleteTodo(Long id) {
         repository.delete(id);
+    }
+
+    public TodoResponse updateTodo(Long id, TodoUpdateRequest request) {
+        Todo todo = repository.findById(id).orElseThrow(()-> new TodoNotFoundException(id));
+        todo.setTitle(request.getTitle());
+        todo.setCompleted(request.getCompleted());
+        return todoResponse(todo);
+
     }
 }
