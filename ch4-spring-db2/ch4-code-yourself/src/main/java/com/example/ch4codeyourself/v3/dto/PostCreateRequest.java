@@ -1,6 +1,6 @@
-package com.example.ch4codeyourself.v1.dto;
+package com.example.ch4codeyourself.v3.dto;
 
-import com.example.ch4codeyourself.v1.domain.Post;
+import com.example.ch4codeyourself.v3.domain.Post;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ public class PostCreateRequest {
     private String title;
     private String body;
 
-    public  Post toDomain() {
+    public Post toDomain() {
         Post post = new Post();
         post.setTitle(this.title);
         post.setBody(this.body);

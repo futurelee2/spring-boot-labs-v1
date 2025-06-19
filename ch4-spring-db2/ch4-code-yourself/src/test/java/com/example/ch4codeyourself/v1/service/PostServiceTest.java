@@ -6,6 +6,7 @@ import com.example.ch4codeyourself.v1.dto.PostResponse;
 import com.example.ch4codeyourself.v1.dto.PostUpdateRequest;
 import com.example.ch4codeyourself.v1.repository.PostRepository;
 import net.bytebuddy.build.ToStringPlugin;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,7 +27,7 @@ import static org.mockito.Mockito.verify;
 // junit : 테스트 코드를 실행시키는 주체 - 전체 흐름 담당
 // Mockito : Mocking 기능 담당  - junit이 목킹 기능을 위해 모키토 사용
 
-
+@Disabled // qurydsl 사용하기 위해서 해놓음
 @ExtendWith(MockitoExtension.class)
 class PostServiceTest {
 
@@ -39,7 +40,7 @@ class PostServiceTest {
     @Mock // 가짜 객체로 생성함 (현재는 테스트 대상이 아님)
     private PostRepository postRepository; // db 당장 잘되는지 안되는지 필요없음. 잘되는지 가정하고 서비스를 테스트함
 
-    @InjectMocks // 스프링이 아닌 환경에서 의존성 주입하는 방법
+    @InjectMocks // 스프링이 아닌 환경에서 의존성 주입하는 방법(의존성 주입해줘라 레포지토리를..)
     private PostService postService;
 
 

@@ -1,6 +1,6 @@
 ## 독서 리뷰 게시판 API – 검색 기능 확장 실습
 
-- 지금까지 구현한 리뷰 게시판에 검색 조건과 페이징 기능능을 추가해보세요.
+- 지금까지 구현한 리뷰 게시판에 검색 조건과 페이징 기능을 추가해보세요.
 
 ### 공통 요청 형식
 
@@ -40,7 +40,7 @@
 * 모든 조건은 QueryParam으로 조합:
 
   ```
-  /reviews?author=yun&keyword=마법&minRating=3&page=0&size=10
+  /reviews?author=yun&minRating=3&page=0&size=10
   ```
 
 #### 📦 `ReviewSearchRequest` DTO 예시
@@ -49,7 +49,6 @@
 public class ReviewSearchRequest {
     private String author;
     private String bookTitle;
-    private String keyword;
     private Integer rating;
     private Integer minRating;
     private Integer maxRating;

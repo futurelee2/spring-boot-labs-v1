@@ -1,14 +1,11 @@
-package com.example.ch4codeyourself.v2.controller;
+package com.example.ch4codeyourself.v3.controller;
 
 
-import com.example.ch4codeyourself.v2.dto.*;
-import com.example.ch4codeyourself.v2.service.PostService;
+import com.example.ch4codeyourself.v3.dto.*;
+import com.example.ch4codeyourself.v3.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,6 +21,7 @@ public class PostController {
 
     @GetMapping
     public ResponseEntity<PostPageResponse> getAll(PostSearchRequset search) {
+        System.out.println("search: " + search.getKeyword());
         return ResponseEntity.ok(service.getAllPosts(search));
     }
 
