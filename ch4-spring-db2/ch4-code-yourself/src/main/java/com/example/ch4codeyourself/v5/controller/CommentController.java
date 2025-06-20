@@ -1,20 +1,11 @@
-package com.example.ch4codeyourself.v4.controller;
+package com.example.ch4codeyourself.v5.controller;
 
-import com.example.ch4codeyourself.v4.domain.Comment;
-import com.example.ch4codeyourself.v4.domain.Post;
-import com.example.ch4codeyourself.v4.dto.comment.CommentCreateRequest;
-import com.example.ch4codeyourself.v4.dto.comment.CommentPageResponse;
-import com.example.ch4codeyourself.v4.dto.comment.CommentResponse;
-import com.example.ch4codeyourself.v4.dto.comment.CommentUpdateRequest;
-import com.example.ch4codeyourself.v4.repository.PostRepository;
-import com.example.ch4codeyourself.v4.service.CommentService;
-import jakarta.persistence.EntityNotFoundException;
+import com.example.ch4codeyourself.v5.dto.comment.*;
+import com.example.ch4codeyourself.v5.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -27,14 +18,12 @@ public class CommentController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(commentService.createComment(postId, request));
     }
-
+    
+    // 대댓글 포함해서 보여주기
     @GetMapping("/posts/{postId}/comments")
-    public ResponseEntity<CommentPageResponse> getAllComments(@PathVariable Long postId,
-                                                                    @RequestParam(defaultValue = "0") int page,
-                                                                    @RequestParam(defaultValue = "10") int size) {
-        return ResponseEntity.ok(commentService.getCommentsByPost(postId,page,size));
+    public ResponseEntity<CommentPageResponse> getAllComments(@PathVariable Long postId, CommentSearchRequest request) {
+        return ResponseEntity.ok(commentService.getCommentsByPost(postId,request));
     }
-
 
     @PutMapping("/comments/{commentsId}")
     public ResponseEntity<CommentResponse> updateComment(@PathVariable Long commentsId, @RequestBody CommentUpdateRequest request){

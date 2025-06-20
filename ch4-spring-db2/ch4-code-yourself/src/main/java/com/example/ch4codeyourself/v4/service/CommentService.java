@@ -8,6 +8,7 @@ import com.example.ch4codeyourself.v4.dto.comment.CommentResponse;
 import com.example.ch4codeyourself.v4.dto.comment.CommentUpdateRequest;
 import com.example.ch4codeyourself.v4.repository.CommentRepository;
 import com.example.ch4codeyourself.v4.repository.PostRepository;
+import com.example.ch4codeyourself.v5.dto.comment.CommentSearchRequest;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -58,4 +59,7 @@ public class CommentService {
         Comment comment = commentRepository.findById(commentId).orElseThrow(()-> new IllegalArgumentException("존재하는 댓글이 없습니다."));
         commentRepository.delete(comment);
     }
+
+
+
 }
