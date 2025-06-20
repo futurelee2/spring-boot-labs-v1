@@ -17,6 +17,7 @@ public class ReviewResponse {
     private String bookAuthor;
     private Long rating;
 
+
     //
     public static ReviewResponse from(Review review) {
         return new ReviewResponse(review.getId(), review.getTitle(), review.getContent(), review.getAuthor(), review.getBookTitle(), review.getBookAuthor(), review.getRating());

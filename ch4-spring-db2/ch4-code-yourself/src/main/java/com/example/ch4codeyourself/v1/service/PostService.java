@@ -43,14 +43,13 @@ public class PostService {
     }
 
     @Transactional // 스프링 트렌젝션으로 선언
-    // 하나의 트렌젝션으로 선언해주면 아래 내용 커밋됨..?
+    // 하나의 트렌젝션으로 선언해주면 성공 시, 커밋됨
     public PostResponse updatePost(Long id, PostUpdateRequest request) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("게시글이 존재하지 않습니다."));
         post.setTitle(request.getTitle());
         post.setBody(request.getBody());
-        // 더티 체킹 -> 따로 저장 안해도 됨 (수정하면 쿼리가 나가는..?)
-        // 트렉젝션이 끝나면
+        // 더티 체킹 되어서 따로 저장 안해도 됨 ( 트렉젝션이 끝나면 수정하면 쿼리가 나감)
         // 변경 감지가 일어났을때 dirty checking -> SQL (업데이트 쿼리 날려줌)
         // 하지만 트렌젝션을 안 일어나면 (@Transactional 없으면) 업데이트 안됨
 

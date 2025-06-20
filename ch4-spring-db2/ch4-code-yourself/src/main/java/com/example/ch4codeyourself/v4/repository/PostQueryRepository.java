@@ -1,13 +1,10 @@
-package com.example.ch4codeyourself.v3.repository;
+package com.example.ch4codeyourself.v4.repository;
 
-import com.example.ch4codeyourself.v3.domain.Post;
-import com.example.ch4codeyourself.v3.dto.PostResponse;
-import com.example.ch4codeyourself.v3.dto.PostSearchRequset;
+import com.example.ch4codeyourself.v4.domain.Post;
+import com.example.ch4codeyourself.v4.dto.post.PostResponse;
+import com.example.ch4codeyourself.v4.dto.post.PostSearchRequset;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
 

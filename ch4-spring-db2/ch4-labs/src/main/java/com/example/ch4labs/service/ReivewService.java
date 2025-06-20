@@ -1,12 +1,13 @@
 package com.example.ch4labs.service;
 
 import com.example.ch4labs.domain.Review;
-import com.example.ch4labs.dto.ReviewCreate;
-import com.example.ch4labs.dto.ReviewResponse;
-import com.example.ch4labs.dto.ReviewUpdate;
+import com.example.ch4labs.dto.*;
 import com.example.ch4labs.repository.ReviewRepository;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,6 @@ import java.util.Optional;
 public class ReivewService {
     private final ReviewRepository repository;
 
-    @Transactional(readOnly = true)
     public ReviewResponse create(ReviewCreate request) {
         // request 라는 변수로 받아서 인스턴스화 되어 있기때문에, 내부 메서드 접근이 가능함.
         Review review = request.toDomian();
@@ -48,4 +48,22 @@ public class ReivewService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+//    public ReviewPageResponse search(ReviewSearchRequest search) {
+//        Pageable pageable = PageRequest.of(search.getPage(),search.getSize());
+//        Page<Review> searchReview = repository.findByTitleContaining(search.getBookTitle(), pageable);
+//        Page<ReviewResponse> pageResponse = (searchReview.map(review -> ReviewResponse.from(review)));
+//
+//        return ReviewPageResponse.from(pageResponse.getContent(),pageResponse.getTotalPages(), pageResponse.getTotalElements(), search);
+//    }
+
+    public ReviewPageResponse search(ReviewSearchRequest search) {
+            Pageable pageable = PageRequest.of(search.getPage(),search.getSize());
+            Page<Review> searchReview = repository.findByTitleContaining(search.getBookTitle(), pageable);
+
+    }
+
+
+
+
 }

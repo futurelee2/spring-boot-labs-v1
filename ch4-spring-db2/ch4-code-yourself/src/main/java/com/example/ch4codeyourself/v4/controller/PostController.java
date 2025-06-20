@@ -1,8 +1,8 @@
-package com.example.ch4codeyourself.v3.controller;
+package com.example.ch4codeyourself.v4.controller;
 
 
-import com.example.ch4codeyourself.v3.dto.*;
-import com.example.ch4codeyourself.v3.service.PostService;
+import com.example.ch4codeyourself.v4.dto.post.*;
+import com.example.ch4codeyourself.v4.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,10 +24,16 @@ public class PostController {
         return ResponseEntity.ok(service.getAllPosts(search));
     }
 
+//    @GetMapping("/{id}")
+//    public ResponseEntity<PostResponse> getById(@PathVariable Long id) {
+//        return ResponseEntity.ok(service.getPostById(id));
+//    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<PostResponse> getById(@PathVariable Long id) {
+    public ResponseEntity<PostWithCommentsResponse> getById(@PathVariable Long id) {
         return ResponseEntity.ok(service.getPostById(id));
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<PostResponse> update(@PathVariable Long id, @RequestBody PostUpdateRequest request) {

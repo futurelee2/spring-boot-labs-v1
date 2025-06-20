@@ -1,13 +1,11 @@
-package com.example.ch4codeyourself.v3.service;
+package com.example.ch4codeyourself.v4.service;
 
 
-import com.example.ch4codeyourself.v3.domain.Post;
-import com.example.ch4codeyourself.v3.dto.*;
-import com.example.ch4codeyourself.v3.repository.PostRepository;
+import com.example.ch4codeyourself.v4.domain.Post;
+import com.example.ch4codeyourself.v4.dto.post.*;
+import com.example.ch4codeyourself.v4.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -69,12 +67,19 @@ public class PostService {
     }   
 
 
+//    @Transactional(readOnly = true)
+//    public PostResponse getPostById(Long id) {
+//        return postRepository.findById(id)
+//                .map(PostResponse::from)// (post -> PostResponse.from(post) 랑 동일
+//                .orElseThrow(() -> new NoSuchElementException("게시글이 존재하지 않습니다."));
+//    }
     @Transactional(readOnly = true)
-    public PostResponse getPostById(Long id) {
+    public PostWithCommentsResponse getPostById(Long id) {
         return postRepository.findById(id)
-                .map(PostResponse::from)// (post -> PostResponse.from(post) 랑 동일
+                .map(PostWithCommentsResponse::from)// (post -> PostResponse.from(post) 랑 동일
                 .orElseThrow(() -> new NoSuchElementException("게시글이 존재하지 않습니다."));
     }
+
 
     @Transactional // 스프링 트렌젝션으로 선언
     // 하나의 트렌젝션으로 선언해주면 아래 내용 커밋됨..?

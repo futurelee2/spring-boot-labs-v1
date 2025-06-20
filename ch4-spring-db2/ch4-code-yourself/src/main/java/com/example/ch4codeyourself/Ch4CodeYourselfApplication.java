@@ -18,9 +18,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //
 
 
-@SpringBootApplication(scanBasePackages = "com.example.ch4codeyourself.v3") // 패키지 있는 애들만 등록시키기 위해
-@EnableJpaRepositories(basePackages = "com.example.ch4codeyourself.v3")
-@EntityScan(basePackages = "com.example.ch4codeyourself.v3")
+@SpringBootApplication(scanBasePackages = "com.example.ch4codeyourself.v4") // 패키지 있는 애들만 등록시키기 위해
+@EnableJpaRepositories(basePackages = "com.example.ch4codeyourself.v4")
+@EntityScan(basePackages = "com.example.ch4codeyourself.v4")
 public class Ch4CodeYourselfApplication {
 
     public static void main(String[] args) {
