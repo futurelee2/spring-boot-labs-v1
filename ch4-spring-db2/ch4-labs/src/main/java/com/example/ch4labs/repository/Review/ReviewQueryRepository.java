@@ -1,8 +1,9 @@
 package com.example.ch4labs.repository.Review;
 
-import com.example.ch4labs.domain.Review;`
+import com.example.ch4labs.dto.Review.ReviewResponse;
+import com.example.ch4labs.dto.Review.ReviewSearchRequest;
 import org.springframework.data.domain.Page;
 
 public interface ReviewQueryRepository{
-    Page<Review> search(Review, pageable);
+    Page<ReviewResponse> search(ReviewSearchRequest request);
 }

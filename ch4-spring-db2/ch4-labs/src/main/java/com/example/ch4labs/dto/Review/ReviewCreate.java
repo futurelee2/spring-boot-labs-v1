@@ -14,7 +14,7 @@ public class ReviewCreate {
     private String author;
     private String bookTitle;
     private String bookAuthor;
-    private Long rating;
+    private Integer rating;
 
     public Review toDomian() {
         Review review = new Review();

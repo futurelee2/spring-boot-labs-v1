@@ -1,12 +1,13 @@
 package com.example.ch4labs.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,6 +22,11 @@ public class Review {
     private String  author;
     private String bookTitle;
     private String bookAuthor;
-    private Long rating;
- }
+    private Integer rating;
 
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @OneToMany (mappedBy = "review", fetch = FetchType.LAZY)
+    private List<Comment> comments;
+ }

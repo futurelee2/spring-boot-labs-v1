@@ -15,7 +15,7 @@ public class ReviewResponse {
     private String  author;
     private String bookTitle;
     private String bookAuthor;
-    private Long rating;
+    private Integer rating;
 
 
     //

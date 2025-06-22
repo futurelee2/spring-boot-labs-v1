@@ -29,6 +29,8 @@ public class Post {
     @CreationTimestamp // db 에 알려줌
     private LocalDateTime createdAt;
 
+
+    // Comment 엔티티에 post 가 연관관계 주인이라는 뜻
     @OneToMany(mappedBy = "post", fetch= FetchType.LAZY) // comment를 쓸때 가져옴
     private List<Comment> comments = new ArrayList<>();
 

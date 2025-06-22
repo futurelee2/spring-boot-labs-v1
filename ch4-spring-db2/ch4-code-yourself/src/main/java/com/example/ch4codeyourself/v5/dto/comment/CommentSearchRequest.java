@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class CommentSearchRequest {
-    @Builder.Default // 이걸 넣어주면 builder 초기화 됨
+    @Builder.Default // 원래 초기화 안되지만 이걸 넣어주면 builder 초기화 됨
     private int page =0; // builder를 쓰면 초기화가 안됨
     @Builder.Default
     private int size=10;

@@ -1,6 +1,6 @@
 package com.example.ch4labs.controller;
 
-import com.example.ch4labs.dto.*;
+import com.example.ch4labs.dto.Review.*;
 import com.example.ch4labs.service.ReivewService;
 import lombok.RequiredArgsConstructor;
 
