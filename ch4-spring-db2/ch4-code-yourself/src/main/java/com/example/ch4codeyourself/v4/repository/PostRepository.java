@@ -28,7 +28,7 @@ public interface PostRepository extends JpaRepository<com.example.ch4codeyoursel
     Page<com.example.ch4codeyourself.v4.domain.Post> findByTitleContainingAndAuthor(String keyword , String author, Pageable pageable);
 
     //JPQL로 제목 검색어 포함
-    @Query("SELECT p FROM Post p WHERE p.title LIKE %:keyword%  AND p.author LIKE :author ")
+    @Query("SELECT p FROM Post p WHERE p.title LIKE %:keyword%  AND p.author LIKE :author ") // 정확히 일치
     Page<com.example.ch4codeyourself.v4.domain.Post> searchByTitleContainingAndAuthor(@Param("keyword")  String keyword , @Param("author") String author, Pageable pageable);
 
     // 작성일자 이후에 대한 조회

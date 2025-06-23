@@ -17,8 +17,6 @@ public class ReviewPageResponse {
     private List<ReviewResponse> ReviewResponse;
 
 
-
-
     public static ReviewPageResponse from(List<ReviewResponse> reviewResponse, int totalPages, Long totalCount , ReviewSearchRequest search){
         return new ReviewPageResponse(
                 search.getPage(), search.getSize(),totalPages,

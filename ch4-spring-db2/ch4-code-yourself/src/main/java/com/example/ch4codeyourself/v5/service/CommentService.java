@@ -28,11 +28,6 @@ public class CommentService {
         // post 를 가져오기 위해서 postService 를 가져오지않고 repository 가져옴
         Post post = postRepository.findById(postId).orElseThrow(()-> new EntityNotFoundException("Post not found"));
 
-
-        if (request.getParentId() != null) {
-            Comment parent =  commentRepository.findById(request.getParentId()).orElseThrow(()-> new EntityNotFoundException("Comment not found"));
-        }
-
         Comment comment = Comment.builder()
                 .content(request.getContent())
                 .author(request.getAuthor())
@@ -60,12 +55,10 @@ public class CommentService {
         if(request.isHierarchical()) {
             // 계층 구조로 보여주기
             return getHierarchicalCommentByPost(postId, pageable);
-
         }else{
             // 플랫구조로 보여주기
             return getFlatCommentsByPost(postId, pageable);
         }
-
 
     }
 
@@ -85,11 +78,13 @@ public class CommentService {
 
     // 여기 안에서 사용하는거면 private
     private CommentPageResponse getFlatCommentsByPost(Long postId, Pageable pageable) {
+        // comment 레포지토리에서 postid를 찾는게 가능한 것은, comment 엔티티에서 post 필드가 Post 엔티티이기때문에
+        // JPA가 자동으로 post.getId() 라는 조건을 생성해줌
         Page<CommentResponse> comments= commentRepository.findByPostId(postId, pageable).map(CommentResponse:: from); // page 정보 + 하나의 post의 댓글들!
-        return CommentPageResponse.from(comments);
+        return CommentPageResponse.from(comments); // 모두 같은 계층으로 표현됨
     }
 
-
+    // 계층형은 트리형태로 표현이 되어, 대댓글이 시각적으로 구분이 가능함
     private CommentPageResponse getHierarchicalCommentByPost(Long postId, Pageable pageable) {
         // 계층형 응답
         // 부모댓글 가져와서 + 부모 댓글의 페이징

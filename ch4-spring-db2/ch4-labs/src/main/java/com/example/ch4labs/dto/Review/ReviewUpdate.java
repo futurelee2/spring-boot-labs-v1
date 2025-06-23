@@ -13,7 +13,7 @@ public class ReviewUpdate {
     private String author;
     private String bookTitle;
     private String bookAuthor;
-    private Long rating;
+    private Integer rating;
 
     };
 

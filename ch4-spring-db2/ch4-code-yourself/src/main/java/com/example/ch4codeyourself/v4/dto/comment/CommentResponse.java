@@ -1,6 +1,7 @@
 package com.example.ch4codeyourself.v4.dto.comment;
 
 import com.example.ch4codeyourself.v4.domain.Comment;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
