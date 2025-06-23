@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class CommentCreateRequest {
     private String content;
     private String author;
-    private Long parentCommentId;
+    private Integer parentCommentId;
 }

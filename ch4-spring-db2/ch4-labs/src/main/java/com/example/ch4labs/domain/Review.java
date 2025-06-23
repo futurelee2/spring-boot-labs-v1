@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -30,7 +31,6 @@ public class Review {
 
     @OneToMany (mappedBy = "review", fetch = FetchType.LAZY)
     //  "review"는 상대방 엔티티(Comment 클래스) 안  필드를 말함.
-    private List<Comment> comments;
-    // private List<Comment> comment = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
  }
 

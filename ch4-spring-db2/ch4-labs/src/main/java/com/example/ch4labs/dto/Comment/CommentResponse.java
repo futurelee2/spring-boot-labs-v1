@@ -24,6 +24,7 @@ public class CommentResponse {
     private Long reviewId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    @Builder.Default
     private List<CommentResponse> replies = new ArrayList<>();
 
 
@@ -32,7 +33,6 @@ public class CommentResponse {
                 .id(comment.getId())
                 .content(comment.getContent())
                 .author(comment.getAuthor())
-                .reviewId(comment.getReviewId())
                 .createdAt(comment.getCreatedAt())
                 .updatedAt(comment.getUpdatedAt())
                 .build();

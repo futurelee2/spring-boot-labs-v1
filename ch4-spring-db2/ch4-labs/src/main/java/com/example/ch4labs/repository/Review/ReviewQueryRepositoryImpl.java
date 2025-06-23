@@ -17,7 +17,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 
-@Configuration
+//@Configuration
 @RequiredArgsConstructor
 public class ReviewQueryRepositoryImpl implements ReviewQueryRepository {
     private final JPAQueryFactory queryFactory;

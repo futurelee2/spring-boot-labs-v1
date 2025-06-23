@@ -31,13 +31,12 @@ public class CommentService {
         Comment comment = Comment.builder()
                 .content(request.getContent())
                 .author(request.getAuthor())
-                .reviewId(requsetReview.getId())
                 .createdAt(LocalDateTime.now())
                 .review(requsetReview)
                 .build();
 
         if(request.getParentCommentId() != null){
-            Comment parent = reviewRepository.findById(request.getParentCommentId()).orElseThrow(()-> new EntityNotFoundException("해당 부모 댓글이 없습니다."));
+            Comment parent = commentRepository.findById(request.getParentCommentId()).orElseThrow(()-> new EntityNotFoundException("해당 부모 댓글이 없습니다."));
             comment.setParentComment(parent);
         }
 

@@ -17,6 +17,13 @@ public class PostPageResponse {
     private List<PostResponse> posts;
 
     public static PostPageResponse from(List<PostResponse> posts, PostSearchRequest search, int count) {
-        int
+        int totalPages = (int) Math.ceil((double) count / search.getSize());
+        return new PostPageResponse(
+                search.getPage(),
+                search.getSize(),
+                count,
+                totalPages,
+                posts
+        );
     }
 }
