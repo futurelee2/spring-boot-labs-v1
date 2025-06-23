@@ -1,17 +1,18 @@
 package com.example.ch4labs.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "reviews")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +23,9 @@ public class Review {
     private String bookTitle;
     private String bookAuthor;
     private Long rating;
+
+    @OneToMany(mappedBy = "review")
+    //  "review"는 상대방 엔티티(Comment 클래스) 안  필드를 말함.
+    private List<Comment> comment = new ArrayList<>();
  }
 

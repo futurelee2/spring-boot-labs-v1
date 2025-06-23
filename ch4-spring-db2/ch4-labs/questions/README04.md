@@ -123,6 +123,8 @@
 | `commentSize`     | 페이지당 댓글 수 (기본값: 5)                |
 
 * **응답 예시**:
+```Post Service에서 get 응답할때  Comment 리포지토리도 불러와서 추가해주기**```
+
 
 ```json
 {

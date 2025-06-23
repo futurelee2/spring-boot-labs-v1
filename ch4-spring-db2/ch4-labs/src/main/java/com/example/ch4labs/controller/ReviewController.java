@@ -1,13 +1,11 @@
 package com.example.ch4labs.controller;
 
-import com.example.ch4labs.dto.*;
+import com.example.ch4labs.dto.Review.*;
 import com.example.ch4labs.service.ReivewService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/reviews")

@@ -1,8 +1,8 @@
 package com.example.ch4labs.service;
 
 import com.example.ch4labs.domain.Review;
-import com.example.ch4labs.dto.*;
-import com.example.ch4labs.repository.ReviewRepository;
+import com.example.ch4labs.dto.Review.*;
+import com.example.ch4labs.repository.Review.ReviewRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -57,11 +56,11 @@ public class ReivewService {
 //        return ReviewPageResponse.from(pageResponse.getContent(),pageResponse.getTotalPages(), pageResponse.getTotalElements(), search);
 //    }
 
-    public ReviewPageResponse search(ReviewSearchRequest search) {
-            Pageable pageable = PageRequest.of(search.getPage(),search.getSize());
-            Page<Review> searchReview = repository.findByTitleContaining(search.getBookTitle(), pageable);
-
-    }
+//    public ReviewPageResponse search(ReviewSearchRequest search) {
+//            Pageable pageable = PageRequest.of(search.getPage(),search.getSize());
+//            Page<Review> searchReview = repository.findByTitleContaining(search.getBookTitle(), pageable);
+//
+//    }
 
 
 

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ReviewRepository extends JpaRepository<Review, Long> , ReviewQueryRepository {
+public interface ReviewRepository extends JpaRepository<Review, Long> ,ReviewQueryRepository {
     Page<Review> findByTitleContaining(String bookTitle, Pageable pageable);
 }
 
