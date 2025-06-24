@@ -1,6 +1,6 @@
 package com.example.ch502jwtbasedplainlogin.config;
 
-import com.captainyun7.ch501sessionbasedplainlogin.interceptor.AuthorizationInterceptor;
+import com.example.ch502jwtbasedplainlogin.interceptor.AuthorizationInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

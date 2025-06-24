@@ -1,6 +1,6 @@
 package com.example.ch502jwtbasedplainlogin.dto;
 
-import com.captainyun7.ch501sessionbasedplainlogin.domain.User;
+import com.example.ch502jwtbasedplainlogin.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

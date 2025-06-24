@@ -1,9 +1,10 @@
 package com.example.ch502jwtbasedplainlogin.controller;
 
-import com.captainyun7.ch501sessionbasedplainlogin.dto.LoginRequest;
-import com.captainyun7.ch501sessionbasedplainlogin.dto.SignUpRequest;
-import com.captainyun7.ch501sessionbasedplainlogin.dto.UserResponse;
-import com.captainyun7.ch501sessionbasedplainlogin.service.AuthService;
+import com.example.ch502jwtbasedplainlogin.dto.LoginRequest;
+import com.example.ch502jwtbasedplainlogin.dto.LoginResponse;
+import com.example.ch502jwtbasedplainlogin.dto.SignUpRequest;
+import com.example.ch502jwtbasedplainlogin.dto.UserResponse;
+import com.example.ch502jwtbasedplainlogin.service.AuthService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -31,11 +32,11 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserResponse> login(@Valid @RequestBody LoginRequest loginRequest, HttpSession session) {
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
         // TODO
         // 세션을 통해서 정보를 저장할 수 있음
 
-        return ResponseEntity.ok(authService.login(loginRequest, session));
+        return ResponseEntity.ok(authService.login(loginRequest));
     }
 
     @PostMapping("/logout")

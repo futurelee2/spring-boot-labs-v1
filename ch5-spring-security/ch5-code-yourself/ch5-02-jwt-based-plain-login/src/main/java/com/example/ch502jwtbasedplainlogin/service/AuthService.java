@@ -1,9 +1,12 @@
 package com.example.ch502jwtbasedplainlogin.service;
 
-import com.captainyun7.ch501sessionbasedplainlogin.dto.LoginRequest;
-import com.captainyun7.ch501sessionbasedplainlogin.dto.SignUpRequest;
-import com.captainyun7.ch501sessionbasedplainlogin.dto.UserResponse;
-import com.captainyun7.ch501sessionbasedplainlogin.domain.User;
+
+import com.example.ch502jwtbasedplainlogin.config.JwtUtil;
+import com.example.ch502jwtbasedplainlogin.dto.LoginRequest;
+import com.example.ch502jwtbasedplainlogin.dto.LoginResponse;
+import com.example.ch502jwtbasedplainlogin.dto.SignUpRequest;
+import com.example.ch502jwtbasedplainlogin.dto.UserResponse;
+import com.example.ch502jwtbasedplainlogin.domain.User;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +16,10 @@ import org.springframework.stereotype.Service;
 public class AuthService {
     
     private final UserService userService;
+    // 기존 세션방식에서 필요함
     private static final String USER_SESSION_KEY = "CURRENT_USER"; // 상수 선언
+    private final JwtUtil jwtUtil;
+
 
     public UserResponse register(SignUpRequest signUpRequest) {
         // TODO
@@ -33,7 +39,7 @@ public class AuthService {
         return userService.createUser(signUpRequest);
     }
 
-    public UserResponse login(LoginRequest loginRequest, HttpSession session) {
+    public LoginResponse login(LoginRequest loginRequest) {
         // TODO
         // 사용자가 있는지 확인 by username
         // 있으면 비밀번호 검증
@@ -44,17 +50,31 @@ public class AuthService {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
         
-        // 세션에 저장
-        session.setAttribute(USER_SESSION_KEY, user);
+        // 기존 세션 방식
+        // "쿠키" 로 클라이언트에게 전달
+        // session.setAttribute(USER_SESSION_KEY, user);
+        
 
-        return UserResponse.fromEntity(user);
+        // JWT 방식으로 전환
+        // 토큰을 발행 (서버에서 로그인 성공 시, 토큰 발행 후 클라이언트에게 전달)
+        String token = jwtUtil.generateToken(user);
+
+        return LoginResponse.builder()
+                .userId(user.getId())
+                .email(user.getEmail())
+                .role(user.getRole())
+                .token(token)
+                .build();
     }
 
     public void logout(HttpSession session) {
         // TODO
-        // 세션에서 사용자 정보 지우기
-        session.removeAttribute(USER_SESSION_KEY);
-        session.invalidate(); // 무효화 (초기화)
+        // 기존 세션 방식
+//        session.removeAttribute(USER_SESSION_KEY);
+//        session.invalidate(); // 무효화 (초기화)
+
+        // 토큰은 세션처럼 로그아웃하는게 애매함
+
 
     }
 

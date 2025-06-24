@@ -1,9 +1,9 @@
 package com.example.ch502jwtbasedplainlogin.service;
 
-import com.captainyun7.ch501sessionbasedplainlogin.dto.SignUpRequest;
-import com.captainyun7.ch501sessionbasedplainlogin.dto.UserResponse;
-import com.captainyun7.ch501sessionbasedplainlogin.domain.User;
-import com.captainyun7.ch501sessionbasedplainlogin.repository.UserRepository;
+import com.example.ch502jwtbasedplainlogin.dto.SignUpRequest;
+import com.example.ch502jwtbasedplainlogin.dto.UserResponse;
+import com.example.ch502jwtbasedplainlogin.domain.User;
+import com.example.ch502jwtbasedplainlogin.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

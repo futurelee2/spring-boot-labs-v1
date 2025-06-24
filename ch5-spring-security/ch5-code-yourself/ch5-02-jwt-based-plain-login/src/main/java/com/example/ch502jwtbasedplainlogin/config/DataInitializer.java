@@ -1,7 +1,7 @@
 package com.example.ch502jwtbasedplainlogin.config;
 
-import com.captainyun7.ch501sessionbasedplainlogin.domain.User;
-import com.captainyun7.ch501sessionbasedplainlogin.repository.UserRepository;
+import com.example.ch502jwtbasedplainlogin.domain.User;
+import com.example.ch502jwtbasedplainlogin.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

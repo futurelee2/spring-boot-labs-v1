@@ -1,7 +1,7 @@
 package com.example.ch502jwtbasedplainlogin.controller;
 
-import com.captainyun7.ch501sessionbasedplainlogin.dto.UserResponse;
-import com.captainyun7.ch501sessionbasedplainlogin.service.UserService;
+import com.example.ch502jwtbasedplainlogin.dto.UserResponse;
+import com.example.ch502jwtbasedplainlogin.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

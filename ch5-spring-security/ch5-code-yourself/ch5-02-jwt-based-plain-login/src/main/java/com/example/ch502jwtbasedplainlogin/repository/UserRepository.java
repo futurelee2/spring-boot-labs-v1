@@ -1,7 +1,7 @@
 package com.example.ch502jwtbasedplainlogin.repository;
 
-import com.captainyun7.ch501sessionbasedplainlogin.domain.User;
-import com.captainyun7.ch501sessionbasedplainlogin.dto.SignUpRequest;
+import com.example.ch502jwtbasedplainlogin.domain.User;
+import com.example.ch502jwtbasedplainlogin.dto.SignUpRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

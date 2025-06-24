@@ -1,6 +1,7 @@
 package com.example.ch502jwtbasedplainlogin.interceptor;
 
-import com.captainyun7.ch501sessionbasedplainlogin.domain.User;
+import com.example.ch502jwtbasedplainlogin.config.JwtUtil;
+import com.example.ch502jwtbasedplainlogin.domain.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,7 +23,8 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
     
     private static final String USER_SESSION_KEY = "CURRENT_USER";
     private final ObjectMapper objectMapper;
-    
+    private final JwtUtil jwtUtil;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -33,27 +35,33 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
         // 관리자 API에 대한 권한 검증 (admin으로 시작하면 검증하겠다)
         if(path.startsWith("/api/admin")){
-            HttpSession session = request.getSession();
 
-            // 필터에서 검증을 하고 또 검증하게 됨( 이중검증)
-            if(session == null){
-                sendUnauthorizedResponse(response, "인증이 필요합니다.");
-                return false; // false 로 반환되면 컨트롤러 (다음단계)로 못감
+            String bearerToken = request.getHeader("Authorization");
+            if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+                bearerToken = bearerToken.substring(7);
             }
 
-             User user = (User)session.getAttribute(USER_SESSION_KEY);
-
-            if(user == null){
+            if (bearerToken == null) {
                 sendUnauthorizedResponse(response, "인증이 필요합니다.");
-                return false; // false 로 반환되면 컨트롤러 (다음단계)로 못감
-            }
-
-            if(!user.getRole().equals(("ADMIN"))){
-                sendForbiddenResponse(response, "관리자 권한이 필요합니다.");
                 return false;
-            };
+            }
+
+            // 토큰은 있지만 유효하지 않다 = 만료됨
+            if(!jwtUtil.validateToken(bearerToken)) {
+                sendUnauthorizedResponse(response, "유효하지 않는 토큰입니다.");
+                return false;
+            }
+
+             String role = jwtUtil.getRoleFromToken(bearerToken);
+
+            if(!role.equals("ADMIN")){
+                sendUnauthorizedResponse(response, "관리자 권한이 필요합니다.");
+                return false;
+            }
+
         }
 
+        // 관리자 권한을 가짐.
         return true;
     }
     

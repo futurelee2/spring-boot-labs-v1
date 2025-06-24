@@ -20,3 +20,11 @@ server:
   servlet:
     session:
       timeout: 30m
+
+
+# jwt 방식에서 필요한 것
+# 유효 기간을 줌(보안을 위해) -> 밀리세컨 단위
+jwt:
+  secret: "aas12312adlskflasdfkaslDKJFSJFsdkfjaksdfkjASDKJsadkjfsakd123"
+  expiration: 86400000 # 24시간
+
