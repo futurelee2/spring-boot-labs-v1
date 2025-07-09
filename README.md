@@ -1,3 +1,4 @@
+```mermaid
 sequenceDiagram
     participant U as 사용자 (회원/비회원)
     participant F as 프론트엔드
@@ -19,3 +20,4 @@ sequenceDiagram
         B-->>F: 게시글 목록 전달
         F-->>U: 게시글 목록 렌더링
     end
+```
